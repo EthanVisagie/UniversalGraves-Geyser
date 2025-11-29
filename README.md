@@ -21,7 +21,7 @@ This addon fixes both issues by:
 
 ## Requirements
 
-- **Minecraft**: 1.21.9 - 1.21.10
+- **Minecraft Java**: 1.21.10 (tested)
 - **Fabric Loader**: 0.14.0+
 - **Fabric API**
 - **Universal Graves**: 3.9.1+
@@ -67,7 +67,10 @@ When a Bedrock player opens the grave UI:
 
 ## Configuration
 
-Currently all settings are hardcoded. Configuration file support may be added in a future version.
+Currently all settings are hardcoded.
+
+## Status 
+Experimental but working on our production server. Config file support planned when there is feedback.
 
 | Setting | Value | Description |
 |---------|-------|-------------|
