@@ -37,6 +37,16 @@ for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
 
 @rem Find java.exe
+if defined JAVA21_HOME (
+set "JAVA_HOME=%JAVA21_HOME%"
+goto findJavaFromJavaHome
+)
+
+for /d %%d in ("%ProgramFiles%\Eclipse Adoptium\jdk-21*" "%ProgramFiles%\Java\jdk-21*" "%ProgramFiles%\Microsoft\jdk-21*") do (
+set "JAVA_HOME=%%~fd"
+goto findJavaFromJavaHome
+)
+
 if defined JAVA_HOME goto findJavaFromJavaHome
 
 set JAVA_EXE=java.exe

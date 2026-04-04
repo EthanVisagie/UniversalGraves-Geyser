@@ -21,10 +21,10 @@ This addon fixes both issues by:
 
 ## Requirements
 
-- **Minecraft Java**: 1.21.10 (tested)
-- **Fabric Loader**: 0.14.0+
+- **Minecraft Java**: 1.21.11 (tested)
+- **Fabric Loader**: 0.16.0+
 - **Fabric API**
-- **Universal Graves**: 3.9.1+
+- **Universal Graves**: 3.10.2+
 - **Floodgate** (recommended): For detecting Bedrock players
 
 ## Installation
@@ -47,6 +47,14 @@ cd UniversalGraves-Geyser
 
 # The jar will be in build/libs/
 ```
+
+The Gradle wrapper prefers JDK 21 automatically when it is installed, and the build also declares a Java 21 toolchain for CI.
+
+## Releasing
+
+1. Commit the release changes.
+2. Create and push a tag such as `v1.0.1`.
+3. GitHub Actions will run the release workflow, build the jars on Java 21, and attach them to the GitHub release.
 
 ## How It Works
 
@@ -80,7 +88,7 @@ Experimental but working on our production server. Config file support planned w
 
 ## Compatibility
 
-- **Universal Graves**: Required, tested with 3.9.1+
+- **Universal Graves**: Required, tested with 3.10.2+
 - **Geyser/Floodgate**: Required for Bedrock player detection
 - **Other mods**: Should be compatible with most server-side mods
 

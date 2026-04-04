@@ -114,6 +114,22 @@ esac
 
 CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
 
+if [ -z "$JAVA_HOME" ] ; then
+    for candidate in \
+        "$JAVA21_HOME" \
+        /usr/lib/jvm/temurin-21* \
+        /usr/lib/jvm/java-21* \
+        /usr/lib/jvm/jdk-21* \
+        /Library/Java/JavaVirtualMachines/temurin-21*.jdk/Contents/Home \
+        /Library/Java/JavaVirtualMachines/jdk-21*.jdk/Contents/Home
+    do
+        if [ -n "$candidate" ] && [ -x "$candidate/bin/java" ] ; then
+            JAVA_HOME=$candidate
+            break
+        fi
+    done
+fi
+
 
 # Determine the Java command to use to start the JVM.
 if [ -n "$JAVA_HOME" ] ; then
