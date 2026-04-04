@@ -53,8 +53,8 @@ The Gradle wrapper prefers JDK 21 automatically when it is installed, and the bu
 ## Releasing
 
 1. Commit the release changes.
-2. Create and push a tag such as `v1.0.1`.
-3. GitHub Actions will run the release workflow, build the jars on Java 21, and attach them to the GitHub release.
+2. Create and push a tag such as `v1.0.1-beta.1` for a beta or `v1.0.1` for a stable release.
+3. GitHub Actions will run the release workflow, build the jars on Java 21, and attach them to the GitHub release. Tags containing `beta`, `alpha`, or `rc` are published as prereleases.
 
 ## How It Works
 
