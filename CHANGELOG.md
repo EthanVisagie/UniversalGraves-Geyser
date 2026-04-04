@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.1-beta.1 - 2026-04-05
+## 1.0.1-beta.2 - 2026-04-05
 
 - Add support for Minecraft 1.21.11 and remove the upper-bound loader version check that rejected newer 1.21.x servers.
 - Update Fabric, Universal Graves, SGUI, and Polymer dependency lines for the 1.21.11 release line.
