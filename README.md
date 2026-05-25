@@ -1,108 +1,86 @@
 # UniversalGraves-Geyser
 
-A Fabric mod that adds Bedrock Edition (Geyser/Floodgate) compatibility to [Universal Graves](https://modrinth.com/mod/universal-graves).
+UniversalGraves-Geyser is a Fabric addon that improves Bedrock Edition support for [Universal Graves](https://modrinth.com/mod/universal-graves) when players connect through Geyser and Floodgate.
+
+Universal Graves uses Polymer to render custom grave blocks and GUIs for Java players. Bedrock clients connected through Geyser can miss those virtual visuals. This addon provides Bedrock-friendly grave overlays and GUI translations.
 
 ## Features
 
-- **Visual Grave Overlays**: Bedrock players see skull blocks, floating text displays, and item previews at grave locations
-- **GUI Translation**: Replaces Polymer's custom player head buttons with recognizable vanilla items in the grave UI
-- **Grave Protection**: Prevents graves from being destroyed during slow server loads
-- **Automatic Cleanup**: Overlays are properly removed when graves are collected or destroyed
-
-## Why This Mod?
-
-Universal Graves uses [Polymer](https://github.com/Patbox/polymer) to render custom blocks and GUIs. While this works great for Java Edition players, Bedrock Edition players connecting via Geyser see:
-- Invisible grave blocks (Polymer virtual blocks)
-- Steve heads instead of custom GUI buttons
-
-This addon fixes both issues by:
-1. Sending real block states and fake entities to Bedrock players
-2. Intercepting GUI packets and translating custom heads to vanilla items
+- visual grave overlays for Bedrock players
+- skull block markers at grave positions
+- floating grave text
+- item previews near graves
+- GUI translation for custom player-head buttons
+- protection against graves being destroyed during slow server loads
+- automatic overlay cleanup when graves are collected or destroyed
 
 ## Requirements
 
-- **Minecraft Java**: 1.21.11 (tested)
-- **Fabric Loader**: 0.16.0+
-- **Fabric API**
-- **Universal Graves**: 3.10.2+
-- **Floodgate** (recommended): For detecting Bedrock players
+- Minecraft Java `1.21.11`
+- Fabric Loader `0.18.6` or newer
+- Fabric API
+- Universal Graves `3.10.2+1.21.11`
+- Geyser
+- Floodgate, recommended for Bedrock player detection
 
 ## Installation
 
-1. Install [Fabric](https://fabricmc.net/) for your Minecraft version
-2. Install [Fabric API](https://modrinth.com/mod/fabric-api)
-3. Install [Universal Graves](https://modrinth.com/mod/universal-graves)
-4. Install [Geyser](https://geysermc.org/) and [Floodgate](https://wiki.geysermc.org/floodgate/)
-5. Download this mod and place it in your `mods` folder
+1. Install Fabric for your Minecraft server version.
+2. Install Fabric API.
+3. Install Universal Graves.
+4. Install Geyser and Floodgate.
+5. Put the UniversalGraves-Geyser jar in your server `mods` folder.
+6. Restart the server.
 
-## Building from Source
+## Downloads
+
+Use the approved Modrinth or CurseForge project page when available. Development builds may also be attached to GitHub releases for this repository.
+
+## How It Works
+
+For Bedrock players within range of a grave, the mod renders a Bedrock-visible overlay using real block states and fake entities. This gives Bedrock players a visible grave location instead of relying only on Polymer virtual blocks.
+
+When a Bedrock player opens the grave UI, custom player head buttons are replaced with recognizable vanilla items such as arrows and barriers.
+
+## Known Limits
+
+- This addon is intended for servers using Geyser and Universal Graves.
+- Java players should continue to see the normal Universal Graves behavior.
+- Bedrock visuals are compatibility overlays, not a full replacement for Universal Graves.
+- Other grave mods are not supported unless explicitly listed in a release note.
+
+## Reporting Issues
+
+Open issues on this repository for bugs in this addon.
+
+Include:
+
+- Minecraft version
+- Fabric Loader version
+- Universal Graves version
+- Geyser and Floodgate versions
+- whether the affected player is Java or Bedrock
+- screenshots when the issue is visual
+- `latest.log` or the crash report
+
+## Building From Source
 
 ```bash
-# Clone the repository
-git clone https://github.com/EthanVisagie/UniversalGraves-Geyser.git
-cd UniversalGraves-Geyser
-
-# Build the mod
 ./gradlew build
-
-# The jar will be in build/libs/
 ```
 
-The Gradle wrapper prefers JDK 21 automatically when it is installed, and the build also declares a Java 21 toolchain for CI.
+Built jars are written to `build/libs`.
+
+The build uses Java 21.
 
 ## Releasing
 
 1. Commit the release changes.
 2. Create and push a tag such as `v1.0.1-beta.2` for a beta or `v1.0.1` for a stable release.
-3. GitHub Actions will run the release workflow, build the jars on Java 21, and attach them to the GitHub release. Tags containing `beta`, `alpha`, or `rc` are published as prereleases.
+3. GitHub Actions builds the jars on Java 21 and attaches them to the GitHub release.
 
-## How It Works
-
-### Grave Overlays
-For Bedrock players within 48 blocks of a grave:
-- A skeleton skull block is rendered at the grave position
-- An invisible armor stand displays grave information (owner, items, XP, timers)
-- An invisible fox holds a preview of the first item in the grave
-
-### GUI Translation
-When a Bedrock player opens the grave UI:
-- Custom player head buttons are replaced with vanilla items
-- "Next" → Arrow
-- "Previous" → Arrow
-- "Close" → Barrier
-- "Collect" → Chest
-- And more...
-
-## Configuration
-
-Currently all settings are hardcoded.
-
-## Status 
-Experimental but working on our production server. Config file support planned when there is feedback.
-
-| Setting | Value | Description |
-|---------|-------|-------------|
-| Render Distance | 48 blocks | Maximum distance to show overlays |
-| Update Rate | 5 ticks (0.25s) | How often overlays are updated |
-| Respawn Interval | 30 seconds | How often entities are respawned |
-
-## Compatibility
-
-- **Universal Graves**: Required, tested with 3.10.2+
-- **Geyser/Floodgate**: Required for Bedrock player detection
-- **Other mods**: Should be compatible with most server-side mods
-
-## License
-
-MIT License - See [LICENSE](LICENSE) for details.
+Tags containing `beta`, `alpha`, or `rc` are published as prereleases.
 
 ## Credits
 
-- [Universal Graves](https://modrinth.com/mod/universal-graves) by Patbox
-- [Polymer](https://github.com/Patbox/polymer) by Patbox
-- [SGUI](https://github.com/Patbox/sgui) by Patbox
-- [Geyser](https://geysermc.org/) and [Floodgate](https://wiki.geysermc.org/floodgate/) teams
-
-## Issues
-
-Found a bug? Please report it on [GitHub Issues](https://github.com/EthanVisagie/UniversalGraves-Geyser/issues).
+UniversalGraves-Geyser is an addon for Universal Graves. Universal Graves, Polymer, Geyser, and Floodgate are separate projects maintained by their respective authors.
